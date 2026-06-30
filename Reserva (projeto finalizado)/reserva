@@ -1,0 +1,35 @@
+public class Reserva {
+
+    private Cliente cliente;
+    private Quarto quarto;
+    private int dias;
+    private double valorTotal;
+
+    public Reserva(Cliente cliente, Quarto quarto, int dias) {
+        this.cliente = cliente;
+        this.quarto = quarto;
+        this.dias = dias;
+        this.valorTotal = dias * quarto.getValorDiaria();
+
+        quarto.reservar();
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void exibir() {
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Quarto: " + quarto.getNumero());
+        System.out.println("Dias: " + dias);
+        System.out.println("Total: R$ " + valorTotal);
+    }
+}
