@@ -1,0 +1,7 @@
+O projeto está finalizado e com todos os requisitos pedidos pelo professor.
+- Herança (Pessoa → Cliente)
+-  Override de métodos
+-  Polimorfismo com ArrayList<Pessoa>
+-  Encapsulamento com getters e setters
+-  Tratamento de exceções (try/catch)
+-  Menu interativo via console
