@@ -1,0 +1,20 @@
+public class Pagamento {
+
+    private Reserva reserva;
+    private boolean pago;
+
+    public Pagamento(Reserva reserva) {
+        this.reserva = reserva;
+        this.pago = false;
+    }
+
+    public void pagar() {
+        this.pago = true;
+    }
+
+    public void exibir() {
+        System.out.println("Valor: " + reserva.getValorTotal());
+        System.out.println("Status: " + (pago ? "Pago" : "Pendente"));
+    }
+}
+    
