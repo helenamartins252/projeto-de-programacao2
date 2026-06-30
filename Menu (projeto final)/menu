@@ -1,0 +1,86 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Menu {
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+ArrayList<Cliente> clientes = new ArrayList<>();
+ArrayList<Reserva> reservas = new ArrayList<>();
+ArrayList<Pagamento> pagamentos = new ArrayList<>();
+Quartos quartos = new Quartos();
+
+int op;
+
+    do {
+        try {
+            System.out.println("========== HOTEL MARIAS ==========");
+            System.out.println("\n1-Cliente \n2-Quarto \n3-Reserva \n4-Pagamento \n0-Sair\n");
+            System.out.println("=================================");
+            op = sc.nextInt();
+            sc.nextLine();
+
+            switch (op) {
+
+                case 1:
+                    System.out.print("Nome: ");
+                    String nome = sc.nextLine();
+
+                    System.out.print("CPF: ");
+                    String cpf = sc.nextLine();
+
+                    System.out.print("Idade: ");
+                    int idade = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Telefone: ");
+                    String tel = sc.nextLine();
+
+                    clientes.add(new Cliente(nome, cpf, idade, tel));
+                    break;
+
+                case 2:
+                    quartos.listar();
+                    break;
+
+                case 3:
+                    System.out.print("Número quarto: ");
+                    int n = sc.nextInt();
+
+                    System.out.print("Dias: ");
+                    int d = sc.nextInt();
+
+                    Cliente c = clientes.get(0);
+                    Quarto q = quartos.buscar(n);
+
+                    if (q != null && q.isDisponivel()) {
+                            reservas.add(new Reserva(c, q, d));
+                    }
+                    break;
+
+                case 4:
+                    if (!reservas.isEmpty()) {
+                        Pagamento p = new Pagamento(reservas.get(0));
+                        p.pagar();
+                        pagamentos.add(p);
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Erro: digite apenas números quando solicitado!");
+                sc.nextLine();
+            } 
+    sc.close();
+
+} while (true);
+}
+}
+    
